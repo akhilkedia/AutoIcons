@@ -35,7 +35,7 @@ public class changeiconoffolder extends Parameters {
 		pr = Runtime.getRuntime().exec("attrib +h \"" + folderpath +"\\"+ ICON_FILE + "\"");
 		pr.waitFor();
 		//System.out.println("attrib +h \"" + folderpath + ICON_FILE);
-		pr = Runtime.getRuntime().exec("attrib +r \"" + folderpath + "\"");
+		pr = Runtime.getRuntime().exec("attrib +r +s \"" + folderpath + "\"");
 		pr.waitFor();
 		//System.out.println("attrib +r \"" + folderpath + "\"");
 

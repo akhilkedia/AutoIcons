@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 
@@ -25,7 +26,7 @@ public class AutoIcons extends Parameters {
 
 	public static void main(String[] args) throws IOException {
 
-		if (args.length > 1)
+		if (args.length > 0)
 			CONFIG_FILE = args[0];
 
 		LinkedList<String> follist = new LinkedList<String>();
@@ -192,21 +193,28 @@ public class AutoIcons extends Parameters {
 	public static void readParams() {
 		try {
 			BufferedReader buf = new BufferedReader(new FileReader(CONFIG_FILE));
-			String line;
-			for (int i = 0; i < 11; i++) {
+			String line = buf.readLine();
+			HashMap<String, String> parameterMap = new HashMap<String, String>();
+			while (line!= null) {
+				if (line.charAt(0) == '#') {
+					line = buf.readLine();
+					continue;
+				}
+				String[] parts = line.split("=");
+				parameterMap.put(parts[0], parts[1]);
 				line = buf.readLine();
 			}
-			API_KEY = buf.readLine();
-			SEARCH_ENGINE_ID = buf.readLine();
-			PROXY_HOST = buf.readLine();
-			PROXY_PORT = Integer.parseInt(buf.readLine());
-			PROXY = Integer.parseInt(buf.readLine());
-			FULL_PATH = buf.readLine();
-			TOP_FOLDER = buf.readLine();
-			DEPTH = Integer.parseInt(buf.readLine());
-			MUSICMOVIE = Integer.parseInt(buf.readLine());
-			RETRYFAILLIST = Integer.parseInt(buf.readLine());
 			buf.close();
+			API_KEY = parameterMap.get("API_KEY");
+			SEARCH_ENGINE_ID = parameterMap.get("SEARCH_ENGINE_ID");
+			PROXY_HOST = parameterMap.get("PROXY_HOST");
+			PROXY_PORT = Integer.parseInt(parameterMap.get("PROXY_PORT"));
+			PROXY = Integer.parseInt(parameterMap.get("PROXY"));
+			FULL_PATH = parameterMap.get("FULL_PATH");
+			TOP_FOLDER = parameterMap.get("TOP_FOLDER");
+			DEPTH = Integer.parseInt(parameterMap.get("DEPTH"));
+			MUSICMOVIE = Integer.parseInt(parameterMap.get("MUSICMOVIE"));
+			RETRYFAILLIST = Integer.parseInt(parameterMap.get("RETRYFAILLIST"));
 
 		} catch (IOException e) {
 			System.out.println("Config File Not Found - Using Default in-built parameters");
@@ -222,6 +230,8 @@ public class AutoIcons extends Parameters {
 		else
 			conn = url.openConnection();
 		conn.setRequestProperty("User-Agent", USER_AGENT);
+		conn.setReadTimeout(TIMEOUT);
+		conn.setConnectTimeout(TIMEOUT);
 		InputStream is = conn.getInputStream();
 		OutputStream os = new FileOutputStream(destinationFile);
 

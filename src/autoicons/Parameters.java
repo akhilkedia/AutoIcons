@@ -22,6 +22,7 @@ public class Parameters {
 	public static final String DOWNLOADED_IMAGE = "DonwloadedImage.png";
 	public static final String ICON_FILE = "Icon.ico";
 	public static final String FAIL_LIST =  FULL_PATH + "\\Faillist.txt";
+	public static final int TIMEOUT =  1000*10*1;
 	
 
 }

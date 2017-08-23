@@ -1,0 +1,22 @@
+# API Key from google
+# AIzaSyBYyreqbcWnhqyKjoyHkdbEeyzPTQ4pKj0  ||  AIzaSyBADgBIj2_PedzPeZFXMi3i5hIIxPFyC80   ||    AIzaSyD1L10h5glzRT00BOer9cBxekrtc9SX-KY
+API_KEY=AIzaSyBj9YT6qBrfpbeYIEAkNwdszkScviDFLzo
+# Search Engine ID for google search
+# 001250895446244880298:_n7-of9-lq8  ||  014469433644943503174:-xt14k1iqge   ||   000357411643573644417:nderoqdu0o0
+SEARCH_ENGINE_ID=005855697128495569639:m35qcfvf1se
+# Proxy hostname
+PROXY_HOST=10.10.78.22
+# Proxy authentication
+PROXY_PORT=3128
+# Put 1 for proxy, 0 for no proxy
+PROXY=0
+# Path of the installation folder, without slash at the end
+FULL_PATH=C:\Software\AutoIcons
+# Path of the folder you want to run autoIcons on - run on Akhil Study oldstuff
+TOP_FOLDER=C:\Software\
+# 0 for only the TOP_FOLDER, 1 for all its subfolders, 2 for subfolders of subfolders, etc.
+DEPTH=2
+# 0 for google search image, 1 for use infolder image - Recommended Always keep 1
+MUSICMOVIE=1
+# 0 for normal all folders, 1 for only retrying faillist
+RETRYFAILLIST=0
