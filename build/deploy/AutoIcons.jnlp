@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="AutoIcons.jnlp">
+  <information>
+    <title>AutoIcons</title>
+    <vendor>TestAuto</vendor>
+    <description>TestAuto</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="AutoIcons.jar" size="13058" download="eager" />
+    <jar href="libs\commons-logging-1.1.1.jar" size="60686" download="eager" />
+    <jar href="libs\google-api-client-1.20.0.jar" size="194265" download="eager" />
+    <jar href="libs\google-api-client-android-1.20.0.jar" size="10357" download="eager" />
+    <jar href="libs\google-api-client-appengine-1.20.0.jar" size="9872" download="eager" />
+    <jar href="libs\google-api-client-gson-1.20.0.jar" size="2656" download="eager" />
+    <jar href="libs\google-api-client-jackson2-1.20.0.jar" size="2698" download="eager" />
+    <jar href="libs\google-api-client-java6-1.20.0.jar" size="2388" download="eager" />
+    <jar href="libs\google-api-client-servlet-1.20.0.jar" size="6723" download="eager" />
+    <jar href="libs\google-api-services-customsearch-v1-rev46-1.20.0.jar" size="25754" download="eager" />
+    <jar href="libs\google-http-client-1.20.0.jar" size="286717" download="eager" />
+    <jar href="libs\google-http-client-android-1.20.0.jar" size="12048" download="eager" />
+    <jar href="libs\google-http-client-appengine-1.20.0.jar" size="15695" download="eager" />
+    <jar href="libs\google-http-client-gson-1.20.0.jar" size="8550" download="eager" />
+    <jar href="libs\google-http-client-jackson2-1.20.0.jar" size="6720" download="eager" />
+    <jar href="libs\google-http-client-jdo-1.20.0.jar" size="11336" download="eager" />
+    <jar href="libs\google-oauth-client-1.20.0.jar" size="61092" download="eager" />
+    <jar href="libs\google-oauth-client-appengine-1.20.0.jar" size="7948" download="eager" />
+    <jar href="libs\google-oauth-client-java6-1.20.0.jar" size="10914" download="eager" />
+    <jar href="libs\google-oauth-client-jetty-1.20.0.jar" size="5935" download="eager" />
+    <jar href="libs\google-oauth-client-servlet-1.20.0.jar" size="22117" download="eager" />
+    <jar href="libs\gson-2.1.jar" size="180110" download="eager" />
+    <jar href="libs\httpclient-4.0.1.jar" size="291037" download="eager" />
+    <jar href="libs\httpcore-4.0.1.jar" size="172888" download="eager" />
+    <jar href="libs\jackson-core-2.1.3.jar" size="206797" download="eager" />
+    <jar href="libs\jdo2-api-2.3-eb.jar" size="192696" download="eager" />
+    <jar href="libs\jetty-6.1.26.jar" size="539912" download="eager" />
+    <jar href="libs\jetty-util-6.1.26.jar" size="177131" download="eager" />
+    <jar href="libs\jsr305-1.3.9.jar" size="33015" download="eager" />
+    <jar href="libs\transaction-api-1.1.jar" size="15071" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="0" height="0" main-class="autoicons.UI"  name="TestAuto" />
+  <update check="background"/>
+</jnlp>
