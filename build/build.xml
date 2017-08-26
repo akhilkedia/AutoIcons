@@ -5,6 +5,7 @@
 			<filelist>
 				<file name="${java.home}\..\lib\ant-javafx.jar"/>
 				<file name="${java.home}\lib\jfxrt.jar"/>
+			    <file name="${basedir}"/>
 			</filelist>
 		</path>
 	
@@ -247,21 +248,26 @@
 	
 		<mkdir dir="dist" />
 		<mkdir dir="dist/libs" />
-	
+
 		<copy todir="dist/libs">
 			<fileset dir="externalLibs">
 				<include name="*" />
 			</fileset>
 		</copy>
-	
+
+		<mkdir dir="dist/resources" />
+		<copy todir="dist/resources">
+			<fileset dir="../resources" includes="**"/>
+		</copy>
 	
 		<fx:resources id="appRes">
 			<fx:fileset dir="dist" includes="AutoIcons.jar"/>
 			<fx:fileset dir="dist" includes="libs/*"/>
+		    <fx:fileset dir="dist" includes="resources/**"/>
 		</fx:resources>
 	
 		<fx:application id="fxApplication"
-			name="TestAuto"
+			name="AutoIcons"
 			mainClass="autoicons.UI"
 		/>
 	
@@ -276,9 +282,9 @@
 			<fx:resources refid="appRes"/>
 	
 			<manifest>
-				<attribute name="Implementation-Vendor" value="TestAuto"/>
-				<attribute name="Implementation-Title" value="TestAuto"/>
-				<attribute name="Implementation-Version" value="1"/>
+				<attribute name="Implementation-Vendor" value="AutoIcons"/>
+				<attribute name="Implementation-Title" value="AutoIcons"/>
+				<attribute name="Implementation-Version" value="1.0.0"/>
 				<attribute name="JavaFX-Feature-Proxy" value="None"/>
 			</manifest>
 		</fx:jar>
@@ -287,6 +293,7 @@
 		<mkdir dir="deploy" />
 		<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
 		<fx:deploy
+			verbose="true" 
 			embedJNLP="false"
 			extension="false"
 			includeDT="false"
@@ -296,7 +303,7 @@
 			updatemode="background" >
 	
 			<fx:platform basedir="${java.home}"/>
-			<fx:info title="AutoIcons" vendor="TestAuto"/>
+			<fx:info title="AutoIcons" vendor="AutoIcons"/>
 	
 			<fx:application refId="fxApplication"/>
 			<fx:resources refid="appRes"/>

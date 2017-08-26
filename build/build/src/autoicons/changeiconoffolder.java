@@ -17,7 +17,7 @@ public class changeiconoffolder extends Parameters {
 		BufferedWriter buf = new BufferedWriter(new FileWriter(f));
 		buf.write("[.ShellClassInfo]");
 		buf.newLine();
-		buf.write("IconResource="+ICON_FILE+",0");
+		buf.write("IconResource=" + ICON_FILE + ",0");
 		buf.newLine();
 		buf.write("[ViewState]");
 		buf.newLine();
@@ -31,28 +31,30 @@ public class changeiconoffolder extends Parameters {
 
 		Process pr = Runtime.getRuntime().exec("attrib +r +h +s \"" + folderpath + "\\desktop.ini\"");
 		pr.waitFor();
-		//System.out.println("attrib +r +h +s \"" + folderpath + "\\desktop.ini\"");
-		pr = Runtime.getRuntime().exec("attrib +h \"" + folderpath +"\\"+ ICON_FILE + "\"");
+		// System.out.println("attrib +r +h +s \"" + folderpath +
+		// "\\desktop.ini\"");
+		pr = Runtime.getRuntime().exec("attrib +h \"" + folderpath + "\\" + ICON_FILE + "\"");
 		pr.waitFor();
-		//System.out.println("attrib +h \"" + folderpath + ICON_FILE);
+		// System.out.println("attrib +h \"" + folderpath + ICON_FILE);
 		pr = Runtime.getRuntime().exec("attrib +r +s \"" + folderpath + "\"");
 		pr.waitFor();
-		//System.out.println("attrib +r \"" + folderpath + "\"");
+		// System.out.println("attrib +r \"" + folderpath + "\"");
 
 		return true;
 	}
-	
-	public static boolean listfolder(String folderpath, LinkedList<String> folderlist, int depth ){
-		File []files = new File(folderpath).listFiles();
-		for(File f:files){
-			if(f.isDirectory()&&(!f.isHidden())){
-				//System.out.println(f.getAbsolutePath());
-				if(depth>0){
+
+	public static boolean listfolder(String folderpath, LinkedList<String> folderlist, int depth) {
+		File[] files = new File(folderpath).listFiles();
+		for (File f : files) {
+			if (f.isDirectory() && (!f.isHidden())) {
+				// System.out.println(f.getAbsolutePath());
+				if (depth > 0) {
 					folderlist.add(f.getAbsolutePath());
-					listfolder(f.getAbsolutePath(),folderlist,depth-1);}
+					listfolder(f.getAbsolutePath(), folderlist, depth - 1);
+				}
 			}
 		}
-			
+
 		return true;
 	}
 }

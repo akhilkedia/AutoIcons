@@ -1,5 +1,6 @@
 package autoicons;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 public class UI extends Application implements Initializable {
@@ -42,8 +44,6 @@ public class UI extends Application implements Initializable {
 	@FXML
 	public CheckBox PROXY;
 	@FXML
-	public TextField FULL_PATH;
-	@FXML
 	public TextField TOP_FOLDER;
 	@FXML
 	public TextField DEPTH;
@@ -55,6 +55,8 @@ public class UI extends Application implements Initializable {
 	public TextArea OUTPUT;
 	@FXML
 	public Button BUTTON;
+	@FXML
+	public Button BROWSE;
 
 	public static void main(String[] args) {
 		launch();
@@ -63,7 +65,7 @@ public class UI extends Application implements Initializable {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("AddressApp");
+		this.primaryStage.setTitle("AutoIcons");
 		initRootLayout();
 
 		// showPersonOverview();
@@ -90,24 +92,13 @@ public class UI extends Application implements Initializable {
 	 */
 	@FXML
 	private void handleRunAutoIconsPressed(ActionEvent e) {
-		System.out.println("Got here");
-		System.out.println(e);
-		System.out.println(API_KEY.getText());
-		System.out.println(SEARCH_ENGINE_ID.getText());
-		System.out.println(PROXY_HOST.getText());
-		System.out.println(PROXY_PORT.getText());
-		System.out.println(PROXY.isSelected());
-		System.out.println(FULL_PATH.getText());
-		System.out.println(TOP_FOLDER.getText());
-		System.out.println(DEPTH.getText());
-		System.out.println(MUSICMOVIE.isSelected());
-		System.out.println(RETRYFAILLIST.isSelected());
+		System.out.println("Pressed Button.");
 
 		UItoParameters();
 		SaveParameters();
 		BUTTON.setDisable(true);
-		Console console = new Console(OUTPUT);
-		PrintStream ps = new PrintStream(console, true);
+		// Console console = new Console(OUTPUT);
+		// ps = new PrintStream(console, true);
 		System.setOut(ps);
 		System.setErr(ps);
 		System.out.println("Starting AutoIcons!");
@@ -116,13 +107,23 @@ public class UI extends Application implements Initializable {
 		// AutoIcons.RunAutoIcons();
 	}
 
+	@FXML
+	private void handleBrowsePressed(ActionEvent e) {
+		System.out.println("Pressed Browse");
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		directoryChooser.setTitle("Select the Folder to Iconize");
+		File file = directoryChooser.showDialog(null);
+		if (file != null) {
+			TOP_FOLDER.setText(file.getPath());
+		}
+	}
+
 	public void UItoParameters() {
 		autoicons.Parameters.API_KEY = API_KEY.getText();
 		autoicons.Parameters.SEARCH_ENGINE_ID = SEARCH_ENGINE_ID.getText();
 		autoicons.Parameters.PROXY_HOST = PROXY_HOST.getText();
 		autoicons.Parameters.PROXY_PORT = PROXY_PORT.getText().isEmpty() ? 0 : Integer.parseInt(PROXY_PORT.getText());
 		autoicons.Parameters.PROXY = PROXY.isSelected() ? 1 : 0;
-		autoicons.Parameters.FULL_PATH = FULL_PATH.getText();
 		autoicons.Parameters.TOP_FOLDER = TOP_FOLDER.getText();
 		autoicons.Parameters.DEPTH = DEPTH.getText().isEmpty() ? 0 : Integer.parseInt(DEPTH.getText());
 		autoicons.Parameters.MUSICMOVIE = MUSICMOVIE.isSelected() ? 1 : 0;
@@ -134,7 +135,7 @@ public class UI extends Application implements Initializable {
 		OutputStream output = null;
 
 		try {
-			output = new FileOutputStream("config.properties");
+			output = new FileOutputStream(autoicons.Parameters.CONFIG_PROPERTIES_FILE);
 			// set the properties value
 			prop.setProperty("API_KEY", autoicons.Parameters.API_KEY);
 			prop.setProperty("SEARCH_ENGINE_ID", autoicons.Parameters.SEARCH_ENGINE_ID);
@@ -169,7 +170,7 @@ public class UI extends Application implements Initializable {
 
 		try {
 
-			input = new FileInputStream("config.properties");
+			input = new FileInputStream(autoicons.Parameters.CONFIG_PROPERTIES_FILE);
 
 			// load a properties file
 			prop.load(input);
@@ -205,7 +206,6 @@ public class UI extends Application implements Initializable {
 		PROXY_HOST.setText(autoicons.Parameters.PROXY_HOST);
 		PROXY_PORT.setText(autoicons.Parameters.PROXY_PORT + "");
 		PROXY.setSelected(autoicons.Parameters.PROXY == 1);
-		FULL_PATH.setText(autoicons.Parameters.FULL_PATH);
 		TOP_FOLDER.setText(autoicons.Parameters.TOP_FOLDER);
 		DEPTH.setText(autoicons.Parameters.DEPTH + "");
 		MUSICMOVIE.setSelected(autoicons.Parameters.MUSICMOVIE == 1);
@@ -214,7 +214,9 @@ public class UI extends Application implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		autoicons.Parameters.FULL_PATH = System.getProperty("user.dir") + "\\resources\\";
+		System.out.println("FULL_PATH is set to " + autoicons.Parameters.FULL_PATH);
+		autoicons.Parameters.recalculatePaths();
 		LoadParameters();
 		SetUIParameters();
 		ps = new PrintStream(new Console(OUTPUT));

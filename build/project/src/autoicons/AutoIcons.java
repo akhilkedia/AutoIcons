@@ -22,15 +22,31 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 
-public class AutoIcons extends Parameters {
+public class AutoIcons extends Parameters implements Runnable {
+	public UI ui;
 
 	public static void main(String[] args) throws IOException {
 
 		if (args.length > 0)
 			CONFIG_FILE = args[0];
-
-		LinkedList<String> follist = new LinkedList<String>();
 		readParams();
+		RunAutoIcons();
+	}
+
+	public void run() {
+		System.out.println("Hello from a thread!");
+		try {
+			RunAutoIcons();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ui.BUTTON.setDisable(false);
+		}
+	}
+
+	public static void RunAutoIcons() throws IOException {
+		LinkedList<String> follist = new LinkedList<String>();
 		if (RETRYFAILLIST == 0) {
 			follist.add(TOP_FOLDER);
 			changeiconoffolder.listfolder(TOP_FOLDER, follist, DEPTH);
@@ -46,7 +62,7 @@ public class AutoIcons extends Parameters {
 			failfile.delete();
 		}
 		changeIconList(follist);
-
+		System.out.println("Finish All Work. You can Safely Exit now.");
 	}
 
 	public static void changeIconList(LinkedList<String> follist) throws IOException {
@@ -78,7 +94,7 @@ public class AutoIcons extends Parameters {
 				int index = -1;
 				index = cachelist.lastIndexOf(s);
 				System.out.println("Currently Iconizing Folder - " + s);
-				String iconpath = s+"\\"+ ICON_FILE;
+				String iconpath = s + "\\" + ICON_FILE;
 				File foldericon = new File(iconpath);
 
 				if (foldericon.exists()) {
@@ -195,7 +211,7 @@ public class AutoIcons extends Parameters {
 			BufferedReader buf = new BufferedReader(new FileReader(CONFIG_FILE));
 			String line = buf.readLine();
 			HashMap<String, String> parameterMap = new HashMap<String, String>();
-			while (line!= null) {
+			while (line != null) {
 				if (line.charAt(0) == '#') {
 					line = buf.readLine();
 					continue;
@@ -248,6 +264,8 @@ public class AutoIcons extends Parameters {
 
 	public static void recordFail(String path) {
 		BufferedWriter buf;
+		System.out.println("Failed to Iconize - " + path);
+		System.out.println("This could possibly be because your API limit of 100/day has been reached. Please try again.");
 		try {
 			buf = new BufferedWriter(new FileWriter(FAIL_LIST, true));
 			buf.write(path);

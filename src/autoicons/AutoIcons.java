@@ -32,10 +32,10 @@ public class AutoIcons extends Parameters implements Runnable {
 		readParams();
 		RunAutoIcons();
 	}
-	
-    public void run() {
-        System.out.println("Hello from a thread!");
-        try {
+
+	public void run() {
+		System.out.println("Hello from a thread!");
+		try {
 			RunAutoIcons();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -43,8 +43,8 @@ public class AutoIcons extends Parameters implements Runnable {
 		} finally {
 			ui.BUTTON.setDisable(false);
 		}
-    }
-	
+	}
+
 	public static void RunAutoIcons() throws IOException {
 		LinkedList<String> follist = new LinkedList<String>();
 		if (RETRYFAILLIST == 0) {
@@ -94,7 +94,7 @@ public class AutoIcons extends Parameters implements Runnable {
 				int index = -1;
 				index = cachelist.lastIndexOf(s);
 				System.out.println("Currently Iconizing Folder - " + s);
-				String iconpath = s+"\\"+ ICON_FILE;
+				String iconpath = s + "\\" + ICON_FILE;
 				File foldericon = new File(iconpath);
 
 				if (foldericon.exists()) {
@@ -211,7 +211,7 @@ public class AutoIcons extends Parameters implements Runnable {
 			BufferedReader buf = new BufferedReader(new FileReader(CONFIG_FILE));
 			String line = buf.readLine();
 			HashMap<String, String> parameterMap = new HashMap<String, String>();
-			while (line!= null) {
+			while (line != null) {
 				if (line.charAt(0) == '#') {
 					line = buf.readLine();
 					continue;
@@ -264,6 +264,8 @@ public class AutoIcons extends Parameters implements Runnable {
 
 	public static void recordFail(String path) {
 		BufferedWriter buf;
+		System.out.println("Failed to Iconize - " + path);
+		System.out.println("This could possibly be because your API limit of 100/day has been reached. Please try again.");
 		try {
 			buf = new BufferedWriter(new FileWriter(FAIL_LIST, true));
 			buf.write(path);
