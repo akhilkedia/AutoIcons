@@ -55,7 +55,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Search Engine ID for google search." GridPane.rowIndex="2">
+                        <Label text="Custom Search Engine ID for google search." GridPane.rowIndex="2">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
