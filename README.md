@@ -21,13 +21,11 @@
 
 AutoIcons finds beautiful icons for your windows folders, and downloads and applies them to your windows folders.
 
-**Note** - Due to a technical limitation, this won't work with many games. Nothing can be done about this.
-
 ## ScreenShots
 
 ### Below are some screenshots of AutoIcons giving Awesome icons to folders
 
-
+![](https://github.com/akhilkedia/AutoIcons/raw/master/ScreenShots/AutoIcons_Screenshot.png)
 
 ### Below are some of the screenshots of AutoIcons UI
 
@@ -36,7 +34,7 @@ AutoIcons finds beautiful icons for your windows folders, and downloads and appl
 
 ## How to install AutoIcons
 
-1. Simply download the windows installer from [the Github Releases Page]().
+1. Simply download the windows installer from [the Github Releases Page](https://github.com/akhilkedia/AutoIcons/releases).
 
 ## How to build AutoIcons
 

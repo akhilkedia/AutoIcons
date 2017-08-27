@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="AutoIcons.jar" size="25314" download="eager" />
+    <jar href="AutoIcons.jar" size="26214" download="eager" />
     <jar href="libs\commons-logging-1.1.1.jar" size="60686" download="eager" />
     <jar href="libs\google-api-client-1.20.0.jar" size="194265" download="eager" />
     <jar href="libs\google-api-client-android-1.20.0.jar" size="10357" download="eager" />

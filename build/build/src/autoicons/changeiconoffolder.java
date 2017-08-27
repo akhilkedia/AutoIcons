@@ -10,6 +10,7 @@ public class changeiconoffolder extends Parameters {
 	public static boolean changeicon(String folderpath) throws IOException, InterruptedException {
 		File f = new File(folderpath + "\\desktop.ini");
 		if (f.exists()) {
+			System.out.println("Deleting previous Ini File!");
 			Runtime.getRuntime().exec("attrib -r -h -s \"" + folderpath + "\\desktop.ini\"");
 			f.delete();
 		}
@@ -39,6 +40,7 @@ public class changeiconoffolder extends Parameters {
 		pr = Runtime.getRuntime().exec("attrib +r +s \"" + folderpath + "\"");
 		pr.waitFor();
 		// System.out.println("attrib +r \"" + folderpath + "\"");
+		System.out.println("Successfully applied Icon file!!");
 
 		return true;
 	}

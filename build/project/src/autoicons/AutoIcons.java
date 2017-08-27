@@ -156,6 +156,7 @@ public class AutoIcons extends Parameters implements Runnable {
 
 					File imgfile = new File(DOWNLOAD_PATH + index + DOWNLOADED_IMAGE);
 					if (imgfile.exists()) {
+						System.out.println("Image file successfully downloaded!");
 						success = true;
 						cachelist.add(s);
 						buf.write(s);
@@ -169,19 +170,23 @@ public class AutoIcons extends Parameters implements Runnable {
 
 				if (success) {
 					String delcommand = "cmd /C del /A:H \"" + s + "\\" + ICON_FILE + "\"";
+					System.out.println("Deleting any previous Icon file - "+delcommand);
 					Process delpr = Runtime.getRuntime().exec(delcommand);
 					try {
 						delpr.waitFor();
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-					String command = "cmd /C cd \"" + MAGICK_PATH + "\" && convert \"" + DOWNLOAD_PATH + index + DOWNLOADED_IMAGE + "\" " + CONVERT_COMMAND
+					String command = "cmd /C cd \"" + MAGICK_PATH + "\" "
+							+ "&& convert \"" + DOWNLOAD_PATH + index + DOWNLOADED_IMAGE + "\" " + CONVERT_COMMAND
 							+ " \"" + s + "\\" + ICON_FILE + "\"";
 					try {
+						System.out.println("Converting Image File to Icon file - "+command);
 						Process pr = Runtime.getRuntime().exec(command);
 						pr.waitFor();
 						File iconfile = new File(s + "\\" + ICON_FILE);
 						if (iconfile.exists()) {
+							System.out.println("Sucessfully converted to Icon file!");
 							success = true;
 							changeiconoffolder.changeicon(s);
 						} else

@@ -35,7 +35,13 @@ public class Parameters {
 	public static String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11";
 	public static String DOWNLOADED_IMAGE = "DonwloadedImage.png";
 	public static String ICON_FILE = "Icon.ico";
-	public static String CONVERT_COMMAND = " -gravity center -resize 256x256 -extent 256x256 -transparent white -colors 16777216 icon256.png && composite -gravity SouthEast foldericon.png icon256.png icon256.png && convert icon256.png -resize 16x16 icon16.png && convert icon256.png -resize 32x32 icon32.png && convert icon256.png -resize 64x64 icon64.png && convert icon256.png -resize 128x128 icon128.png && convert icon256.png icon32.png icon64.png icon128.png icon256.png -colors 16777216 ";
+	public static String CONVERT_COMMAND = " -gravity center -resize 256x256 -extent 256x256 -transparent white -colors 16777216 \""+DATA_PATH+"icon256.png\""
+			+ " && composite -gravity SouthEast foldericon.png \""+DATA_PATH+"icon256.png\" \""+DATA_PATH+"icon256.png\""
+			+ " && convert \""+DATA_PATH+"icon256.png\" -resize 16x16 \""+DATA_PATH+"icon16.png\""
+			+ " && convert \""+DATA_PATH+"icon256.png\" -resize 32x32 \""+DATA_PATH+"icon32.png\""
+			+ " && convert \""+DATA_PATH+"icon256.png\" -resize 64x64 \""+DATA_PATH+"icon64.png\""
+			+ " && convert \""+DATA_PATH+"icon256.png\" -resize 128x128 \""+DATA_PATH+"icon128.png\""
+			+ " && convert \""+DATA_PATH+"icon256.png\" \""+DATA_PATH+"icon32.png\" \""+DATA_PATH+"icon64.png\" \""+DATA_PATH+"icon128.png\" \""+DATA_PATH+"icon256.png\" -colors 16777216 ";
 	public static int TIMEOUT = 1000 * 10 * 1;
 
 	public static void recalculatePaths() {
@@ -52,6 +58,14 @@ public class Parameters {
 			directory.mkdir();
 		FOLDER_LIST = DATA_PATH + "\\Folderlist.txt";
 		FAIL_LIST = DATA_PATH + "\\Faillist.txt";
+		CONVERT_COMMAND = " -gravity center -resize 256x256 -extent 256x256 -transparent white -colors 16777216 \""+DATA_PATH+"icon256.png\""
+				+ " && composite -gravity SouthEast foldericon.png \""+DATA_PATH+"icon256.png\" \""+DATA_PATH+"icon256.png\""
+				+ " && convert \""+DATA_PATH+"icon256.png\" -resize 16x16 \""+DATA_PATH+"icon16.png\""
+				+ " && convert \""+DATA_PATH+"icon256.png\" -resize 32x32 \""+DATA_PATH+"icon32.png\""
+				+ " && convert \""+DATA_PATH+"icon256.png\" -resize 64x64 \""+DATA_PATH+"icon64.png\""
+				+ " && convert \""+DATA_PATH+"icon256.png\" -resize 128x128 \""+DATA_PATH+"icon128.png\""
+				+ " && convert \""+DATA_PATH+"icon256.png\" \""+DATA_PATH+"icon32.png\" \""+DATA_PATH+"icon64.png\" \""+DATA_PATH+"icon128.png\" \""+DATA_PATH+"icon256.png\" -colors 16777216 ";
+
 	}
 
 }

@@ -22,6 +22,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
@@ -57,6 +59,10 @@ public class UI extends Application implements Initializable {
 	public Button BUTTON;
 	@FXML
 	public Button BROWSE;
+	@FXML
+	public Button HELP_API_KEY;
+	@FXML
+	public Button HELP_SEARCH_ENGINE_ID;
 
 	public static void main(String[] args) {
 		launch();
@@ -105,6 +111,33 @@ public class UI extends Application implements Initializable {
 		autoIcons.ui = this;
 		new Thread(autoIcons).start();
 		// AutoIcons.RunAutoIcons();
+
+	}
+
+	@FXML
+	private void handleHelpApiKeyPressed(ActionEvent e) {
+		WebView wv = new WebView();
+		StackPane root = new StackPane();
+		root.getChildren().add(wv);
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		stage.setTitle("How to Get Google API Key!");
+		stage.setScene(scene);
+		stage.show();
+		wv.getEngine().load("https://akhilkedia.github.io/AutoIcons/#how-to-get-google-api-key");
+	}
+
+	@FXML
+	private void handleHelpSearchEngineIDPressed(ActionEvent e) {
+		WebView wv = new WebView();
+		StackPane root = new StackPane();
+		root.getChildren().add(wv);
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		stage.setTitle("How to Get Google Search Engine ID!");
+		stage.setScene(scene);
+		stage.show();
+		wv.getEngine().load("https://akhilkedia.github.io/AutoIcons/#how-to-get-google-search-engine-id");
 	}
 
 	@FXML

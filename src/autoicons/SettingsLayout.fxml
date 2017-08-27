@@ -47,22 +47,6 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Label text="API Key from google." GridPane.rowIndex="1">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets left="10.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label text="Custom Search Engine ID for google search." GridPane.rowIndex="2">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets left="10.0" />
-                           </GridPane.margin>
-                        </Label>
                         <Label text="Advanced: Proxy hostname. Leave Blank for no Proxy." GridPane.rowIndex="8">
                            <padding>
                               <Insets left="10.0" />
@@ -138,19 +122,57 @@
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin></TextField>
-                        <SplitPane dividerPositions="0.5" GridPane.rowIndex="3">
-                           <items>
-                              <Label text="Path of the folder you want to run autoIcons on - Example D:\FolderName\">
+                        <GridPane GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="HELP_API_KEY" mnemonicParsing="false" onAction="#handleHelpApiKeyPressed" text="Press this button for instructions on getting a Key" GridPane.columnIndex="1" />
+                              <Label text="API Key from google.">
                                  <padding>
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Button fx:id="BROWSE" mnemonicParsing="false" onAction="#handleBrowsePressed" text="Browse" />
-                           </items>
-                           <GridPane.margin>
-                              <Insets left="10.0" />
-                           </GridPane.margin>
-                        </SplitPane>
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.rowIndex="2">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="HELP_SEARCH_ENGINE_ID" mnemonicParsing="false" onAction="#handleHelpSearchEngineIDPressed" text="Press this button for instructions on getting an ID" GridPane.columnIndex="1" />
+                              <Label text="Custom Search Engine ID for google search.">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <GridPane GridPane.rowIndex="3">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.0" minWidth="10.0" prefWidth="227.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="BROWSE" mnemonicParsing="false" onAction="#handleBrowsePressed" text="Browse" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                              <Label prefHeight="21.0" prefWidth="537.0" text="Path of the folder you want to run autoIcons on - Example D:\FolderName\">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </GridPane>
                      </children>
                   </GridPane>
                </children>
