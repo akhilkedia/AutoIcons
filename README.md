@@ -25,7 +25,7 @@ AutoIcons finds beautiful icons for your windows folders, and downloads and appl
 
 ### Below are some screenshots of AutoIcons giving Awesome icons to folders
 
-![](https://github.com/akhilkedia/AutoIcons/raw/master/ScreenShots/AutoIcons_Screenshot.png)
+![](https://github.com/akhilkedia/AutoIcons/raw/master/ScreenShots/AutoIcons_Screnshot.PNG)
 
 ### Below are some of the screenshots of AutoIcons UI
 
